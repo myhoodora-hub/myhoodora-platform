@@ -10,6 +10,8 @@ on:
 jobs:
   verify:
     runs-on: ubuntu-latest
+    # Do not expose secrets at the job level to avoid context-access warnings
+    # Set secrets only on the steps that need them (see Build step below)
 
     steps:
       - name: Checkout code
@@ -23,6 +25,12 @@ jobs:
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
 
+      - name: Setup EAS
+        uses: expo/expo-github-action@v8
+        with:
+          eas-version: latest
+          token: ${{ secrets.EXPO_TOKEN }}
+
       - name: Install dependencies
         run: pnpm install
 
@@ -34,3 +42,5 @@ jobs:
 
       - name: Build
         run: pnpm run build
+        env:
+          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
