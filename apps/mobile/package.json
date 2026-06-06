@@ -35,7 +35,7 @@
   },
   "scripts": {
     "start": "expo start",
-    "build": "eas build --non-interactive --platform all",
+    "build": "node scripts/ci-build.js",
     "dev": "expo start --dev-client",
     "android": "expo start --android",
     "ios": "expo start --ios",
