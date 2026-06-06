@@ -10,8 +10,8 @@ on:
 jobs:
   verify:
     runs-on: ubuntu-latest
-    env:
-      EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
+    # Do not expose secrets at the job level to avoid context-access warnings
+    # Set secrets only on the steps that need them (see Build step below)
 
     steps:
       - name: Checkout code
