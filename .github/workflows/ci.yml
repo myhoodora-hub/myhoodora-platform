@@ -35,6 +35,7 @@ jobs:
         run: pnpm run check-types
 
       - name: Build
-        run: pnpm run build
-        env:
-          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
+        run: |
+          export EXPO_TOKEN=${{ secrets.EXPO_TOKEN }}
+          pnpm run build
+        shell: bash
