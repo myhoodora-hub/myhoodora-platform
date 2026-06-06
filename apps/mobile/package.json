@@ -37,7 +37,7 @@
   },
   "scripts": {
     "start": "expo start",
-    "build": "cross-env EXPO_TOKEN=%EXPO_TOKEN% APP_STORE_CONNECT_KEY_JSON=%APP_STORE_CONNECT_KEY_JSON% node scripts/ci-build.js",
+    "build": "node scripts/ci-build.js",
     "dev": "expo start --dev-client",
     "android": "expo start --android",
     "ios": "expo start --ios",

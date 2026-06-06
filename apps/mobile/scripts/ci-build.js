@@ -1,5 +1,6 @@
 // scripts/ci-build.js
-const { execSync } = require('child_process');
+import { execSync } from 'child_process';
+import 'dotenv/config';
 
 function run(cmd) {
   console.log(`> ${cmd}`);
@@ -15,14 +16,14 @@ try {
   console.log('EXPO_TOKEN is set — starting eas build');
   // Always do Android in CI
   console.log('Starting Android build');
-  run('eas build --non-interactive --platform android');
+  run('eas build --non-interactive --platform android --no-wait');
 
   // Attempt iOS only if an App Store Connect API key (or other iOS creds) is provided
   // Set a secret like APP_STORE_CONNECT_KEY_JSON in your GitHub repo if you want iOS builds on CI.
   if (process.env.APP_STORE_CONNECT_KEY_JSON) {
     console.log('App Store Connect key found — starting iOS build');
     // write key file to disk if required by your setup:
-    run('eas build --non-interactive --platform ios');
+    run('eas build --non-interactive --platform ios --no-wait');
   } else {
     console.log('Skipping iOS build: no App Store Connect API key provided to CI');
   }
