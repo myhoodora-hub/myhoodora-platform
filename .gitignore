@@ -20,6 +20,9 @@ build/
 dist/
 .turbo/
 *.tsbuildinfo
+.expo/
+android/
+ios/
 
 # Testing
 coverage/
@@ -41,10 +44,23 @@ pnpm-debug.log*
 *.swp
 *.swo
 
+# Native
+*.xcworkspace
+*.xcodeproj
+*.orig.*
+*.jks
+*.p12
+*.keystore
+*.p8
+*.mobileprovision
+
 # OS
 .DS_Store
 Thumbs.db
 
 # Misc
 *.pem
+.DS_Store
 .husky/_
+expo-env.d.ts
+.tsbuildinfo
