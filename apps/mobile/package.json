@@ -29,13 +29,14 @@
   },
   "devDependencies": {
     "@types/react": "~19.2.2",
+    "cross-env": "^10.1.0",
+    "eas-cli": "latest",
     "eslint-config-expo": "~56.0.4",
-    "typescript": "~6.0.3",
-    "eas-cli": "latest"
+    "typescript": "~6.0.3"
   },
   "scripts": {
     "start": "expo start",
-    "build": "node scripts/ci-build.js",
+    "build": "cross-env EXPO_TOKEN=%EXPO_TOKEN% APP_STORE_CONNECT_KEY_JSON=%APP_STORE_CONNECT_KEY_JSON% node scripts/ci-build.js",
     "dev": "expo start --dev-client",
     "android": "expo start --android",
     "ios": "expo start --ios",
